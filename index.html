@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Composer Image</title>
+		<link rel='stylesheet' type='text/css' href='css/style.css' />
+		<link rel='stylesheet' type='text/css' href='css/util.css' />
+        <!-- modelo-->
+        <script defer src="src/model/MyCanvas.js"></script>
+        <script defer src="src/App.js"></script>
+
+        <script  src="src/libs/jquery-1.10.2.min.js"></script>
+        <script  src="src/libs/jquery.ui.effect.js"></script>
+        <script  src="src/libs/jquery.ui.effect-slide.js"></script>
+        <script defer src="src/functions.js"></script>
+        <!-- banco-->
+		<script defer src="src/bd/bd.js"></script>
+        <script  src="src/app_init.js"></script>
+    </head>
+    <body id='body' app='firepixel'>
+
+        <!-- screen lock -->
+        <div id='block_display'>
+            <div id='close' style='position:absolute; right:10;' ><img src='img/close.png' ></div>
+        </div>
+
+    <div id='app'>
+        <!-- screen 01 -->
+        <div class="screen" id="screen01">
+            <div class="top"></div>
+                <div class="conteiner_logo">
+                    <img src="images/logo.png">
+                </div>
+                <div class="conteiner_button">
+                    <div id="bt_open_file" class="img"></div>
+                </div>
+        </div>
+
+        <!-- inputFile -->
+        <div id="selectFile">
+        <input id="selectFile_inp" style="display: none" type="file" accept="image/*" >
+        </div>
+        <!--  screen editor -->
+        <div class="screen" id="screen_editor">
+            <div class="top floating">
+                <img class='logo' src="images/logo_mini.png">
+                <img class='nome_logo' src="images/nome_logo.png">
+                <img id="bt_menu" class ='menu'src="images/bt_menu.png">
+            </div>
+            <!-- menu -->
+            <div id="menu_editor">
+                <div class="bt" id="bt_save"></div>
+                <div class="bt" id="bt_open"></div>
+            </div>
+
+            <div class="conteiner_canvas">
+                <canvas id='canvas' height='400px' width='320px'>     </canvas>
+            </div>
+            <div class="conteiner_menu floating">
+                <div class='img' id='bt_insert_image' ></div>
+                <div class='img' id='bt_rotate_image'></div>
+                <div class='img' id='bt_layer_image'></div>
+                <div class='img' id='bt_delete_image'></div>
+            </div>
+        </div>
+    </div>
+    </body>
+</html>

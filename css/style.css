@@ -1,0 +1,192 @@
+/*elements*/
+body{
+    height:480px;
+    width:320px;
+    color:#000;
+    background-color: #ce2128;
+    font-family:'Arial';
+    overflow:hidden;
+    position:absolute;
+    top:0px;
+    margin:0px;
+    padding:0px;
+    left:0px;
+}
+
+#block_display{
+    z-index:998;
+    position:absolute;
+    top:0px;
+    left:0px;
+    height:480px;
+    width:320px;
+    background:rgba(0,0,0, .9);
+    display:none;
+}
+
+canvas{
+    background-image: url('../images/transparente.png');
+    position: relative;
+    top:40px;
+}
+.screen{
+    height:100%;
+    width:100%;
+    position:relative;
+}
+
+#screen01 .top {
+    height: 70px;
+    width:100%;
+}
+
+#screen01 .conteiner_logo {
+    height: 280px;
+}
+
+#screen01 .conteiner_logo img {
+    widht:100%;
+}
+
+#screen01 .conteiner_button {
+    padding-top:50px;
+    height: 100px;
+    width:100%;
+
+}
+
+#screen01 .conteiner_button .img{
+    width:90px;
+    height:32px;
+    margin-left:auto;
+    margin-right:auto;
+    display:block;
+    background-image:url("../images/bt_open_file.png");
+}
+
+#screen01 .conteiner_button .img:active{
+    background-image:url("../images/bt_open_file_over.png");
+}
+
+#screen02{
+    display:none;
+}
+
+#screen02 .top {
+    height: 50px;
+    width:100%;
+    background-color:#eee;
+}
+
+#screen02 img{
+    margin: 5px;
+    display: block;
+}
+#screen02 .conteiner_imgs{
+    overflow-y:scroll;
+    width:100%;
+    height:380px;
+}
+#screen02 .conteiner_imgs .img{
+    width:106px;
+    height:106px;
+    float:left;
+    margin:0px;
+    background-size: 100% 100%;
+}
+
+#screen_editor{
+    font-family: "Franklin Gothic Heavy";
+    font-size: 20px;
+    color:#ffffff;
+    text-align: center;
+    display: none;
+
+}
+
+#screen_editor .top{
+    position:absolute;
+    width:100%;
+    height:40px;
+    background-color: #ce2128;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 0, 0, 0.9);
+    z-index: 998;
+}
+
+#screen_editor .top img{
+    height:100%;
+}
+
+#screen_editor .top .logo{
+    float:left;
+    width: 52px;
+}
+#screen_editor .top .menu{
+    float:right;
+    width:42px;
+}
+#screen_editor .top .nome_logo{
+    float:left;
+    width:200px;
+    margin-left: 3px;
+}
+
+#screen_editor #menu_editor{
+    display: none;
+    width:100%;
+    height:35px;
+    background-color: #ce2128;
+    position: absolute;
+    top:45px;
+    z-index: 998;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 0, 0, 0.9);
+}
+
+#screen_editor #menu_editor .bt{
+    width:150px;
+    height:30px;
+    background-size: 100% 100%;
+}
+
+#screen_editor #menu_editor #bt_save{
+    float:left;
+    background-image: url("../images/bt_save.png");
+}
+
+#screen_editor #menu_editor #bt_open{
+    float: right;
+    background-image: url("../images/bt_open.png");
+}
+
+
+#screen_editor .conteiner_menu{
+    position: relative;
+    top:30px;
+    height:45px;
+    background-color:#ffffff;
+}
+
+#screen_editor .conteiner_menu .img{
+   margin-top: 5px;
+   height:36px;
+   width:34px;
+   float: left;
+   margin-left:35px;
+   background-size: 100% 100%;
+}
+
+#bt_insert_image{
+    background-image:url('../images/bt_anima.png');
+}
+
+#bt_rotate_image{
+    background-image:url('../images/bt_rotaciona.png')
+}
+
+#bt_layer_image{
+    background-image:url('../images/bt_layers.png');
+}
+
+#bt_delete_image{
+    background-image:url('../images/bt_delete.png');
+}
