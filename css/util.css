@@ -1,0 +1,14 @@
+.floating:after {
+    content: " ";
+    display: block;
+    height: 0;
+    clear: both;
+    font-size: 0;
+    visibility: hidden;
+}
+* html .floating {
+    zoom: 1;
+}
+.floating {
+    display: block;
+}

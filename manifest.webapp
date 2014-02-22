@@ -1,0 +1,23 @@
+{
+  "name": "Composer Images",
+  "version": "1",
+  "description": "",
+  "launch_path": "/index.html",
+  "developer": {
+    "name": "Luis Araujo",
+    "url": "https://github.com/LuisAraujo/"
+  },
+  "permissions": {
+    "device-storage:pictures": {
+      "description": "Required to save images png",
+      "access": "readwrite"
+    }
+  },
+  "icons": {
+    "60": "/images/icons/icon_60.png",
+    "128": "/images/icons/icon_128.png"
+  },
+  "fullscreen": "true",
+  "type": "privileged",
+  "default_locale": "en"
+}
