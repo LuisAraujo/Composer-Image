@@ -4,30 +4,30 @@
  *
  */
 
-var Element = function(str){
+var Element = function(img, h, w){
 
-    this.posX=95;
-    this.posY=223;
-    this.image=str;
-    this.h = 0;
-    this.w=0;
+    this.x=95;
+    this.y=223;
+    this.image=img;
+    this.h =h;
+    this.w =w;
     this.r=0;
 
 
     this.getPosX = function(){
-        return this.posX;
+        return this.x;
     };
 
     this.setPosX = function(x){
-        this.posX = x;
+        this.x = x;
     };
 
     this.getPosY = function(){
-      return this.posY;
+      return this.y;
     };
 
     this.setPosY = function(y){
-        this.PosY = y;
+        this.y = y;
     };
 
     this.setImage = function(str){
@@ -59,9 +59,31 @@ var Element = function(str){
     };
 
     this.getRotation = function(){
-        return r;
+        return this.r;
     };
 
 
+    this.click = function(evt){
+
+        var canvas = document.getElementById('canvas');
+        canvas.height=400;
+        canvas.width=320;
+        var rectNav = canvas.getBoundingClientRect();
+
+        var pos = {
+            x: evt.targetTouches[0].pageX - rectNav.left,
+            y: evt.targetTouches[0].pageY - rectNav.top
+        };
+
+        var y= ( (this.y < 0)? 0 : this.y);
+        var x= ( (this.x < 0)? 0 : this.x);
+        console.log('x',x,x+this.w,'y',y,y+this.h );
+        // if(  ((pos.x > x) && (pos.x<(x+eval(this.w)))) && ((pos.y>y) && (pos.y<(y+eval(this.h))))){
+         if( (pos.x > x) && (pos.x<(x+this.w)) && (pos.y>y) && (pos.y<(y+this.h)) ){
+            return true;
+        }
+
+        return false;
+    };
 
 }

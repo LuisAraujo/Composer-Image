@@ -87,6 +87,17 @@ var MyCanvas = function() {
         arrayElements.push(elem)
     }
 
+
+    this.verificaClique = function(evt){
+
+        for(var i = arrayElements.length-1; i >=0; i--){
+            if(arrayElements[i].click(evt)==true)
+              return arrayElements[i];
+        }
+
+      return null;
+    };
+
 };
 
 

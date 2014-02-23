@@ -75,14 +75,19 @@ function  set_buttons_events(){
         app.setState('editor');
         var img = new Image();
         img.src=$(this).attr('file');
+        var h=$(this).attr('h');
+        var w=$(this).attr('w');
             //'images/elementos1.png';
-        var elem = new Element(img);
+        var elem = new Element(img,parseInt(h),parseInt(w));
         app.canvas.pushElement(elem);
 
     });
+
+
 
 
     var filePicker = document.getElementById('selectFile');
     filePicker.querySelector('input').addEventListener('change',onFilePicked, false);
 
 }
+
