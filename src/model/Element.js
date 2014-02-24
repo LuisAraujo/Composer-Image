@@ -12,58 +12,97 @@ var Element = function(img, h, w){
     this.h =h;
     this.w =w;
     this.r=0;
+    this.pointClickX=0;
+    this.pointClickY=0;
+};
 
+    Element.prototype.constructor = new Element();
 
-    this.getPosX = function(){
+    Element.prototype.getPosX = function(){
         return this.x;
     };
 
-    this.setPosX = function(x){
+    Element.prototype.setPosX = function(x){
         this.x = x;
     };
 
-    this.getPosY = function(){
+    Element.prototype.getPosY = function(){
       return this.y;
     };
 
-    this.setPosY = function(y){
+    Element.prototype.setPosY = function(y){
         this.y = y;
     };
 
-    this.setImage = function(str){
+    Element.prototype.getPointClickX = function(){
+        return this.PointClickX;
+    };
+
+    Element.prototype.setPointClickX = function(PointClickX){
+        this.PointClickX = PointClickX;
+    };
+
+    Element.prototype.getPointClickY = function(){
+        return this.PointClickY;
+    };
+
+    Element.prototype.setPointClickY = function(PointClickY){
+        this.PointClickY = PointClickY;
+    };
+    Element.prototype.setImage = function(str){
         this.image.src = 'images/'+str;
     };
 
-    this.getImage = function(){
+    Element.prototype.getImage = function(){
         return this.image;
     };
 
-    this.setHeight = function(h){
+    Element.prototype.setHeight = function(h){
         this.h = h;
     };
 
-    this.getHeight = function(){
+    Element.prototype.getHeight = function(){
         return this.h;
     };
 
-    this.setWidth = function(w){
+    Element.prototype.setWidth = function(w){
         this.w = w;
     };
 
-    this.getWidth = function(){
+    Element.prototype.getWidth = function(){
         return this.w;
     };
 
-    this.setRotation = function(r){
+    Element.prototype.setRotation = function(r){
         this.r = r;
     };
 
-    this.getRotation = function(){
+    Element.prototype.getRotation = function(){
         return this.r;
     };
 
+    Element.prototype.resizeImage = function(str){
+        if(str == 'zoomout'){
 
-    this.click = function(evt){
+            this.setHeight(this.getHeight()+(this.getHeight()*0.1));
+            this.setWidth(this.getWidth()+(this.getWidth()*0.1));
+            this.setPosX(this.getPosX()- ((this.getWidth()*0.1)/2));
+            this.setPosY(this.getPosY()-((this.getHeight()*0.1)/2));
+
+        }else if(str=='zoomin'){
+
+            if((this.getHeight() > 11) && (this.getWidth()>11)){
+                console.log('in!');
+                this.setHeight(this.getHeight()-(this.getHeight()*0.1));
+                this.setWidth(this.getWidth()-(this.getWidth()*0.1));
+                this.setPosX(this.getPosX()+((this.getWidth()*0.1)/2));
+                this.setPosY(this.getPosY()+((this.getHeight()*0.1)/2));
+            }
+        }
+
+    }
+
+    Element.prototype.click = function(evt){
 
         var canvas = document.getElementById('canvas');
         canvas.height=400;
@@ -77,8 +116,7 @@ var Element = function(img, h, w){
 
         var y= ( (this.y < 0)? 0 : this.y);
         var x= ( (this.x < 0)? 0 : this.x);
-        console.log('x',x,x+this.w,'y',y,y+this.h );
-        // if(  ((pos.x > x) && (pos.x<(x+eval(this.w)))) && ((pos.y>y) && (pos.y<(y+eval(this.h))))){
+
          if( (pos.x > x) && (pos.x<(x+this.w)) && (pos.y>y) && (pos.y<(y+this.h)) ){
             return true;
         }
@@ -86,4 +124,4 @@ var Element = function(img, h, w){
         return false;
     };
 
-}
+

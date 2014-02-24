@@ -8,24 +8,41 @@
 
 /*constructor*/
 var MyCanvas = function() {
-    var canvas= document.getElementById('canvas');
-    var ctx = canvas.getContext('2d');
+    this.canvas= document.getElementById('canvas');
+    this.ctx = this.canvas.getContext('2d');
     arrayElements = new Array();
-  //  var img = new Image();
-    //img.src='images/elementos1.png'
-    //arrayElements.push(img);
-
     backgroundImage = new Image();
-    WIDTH = 320;
-    HEIGHT = 400;
+    this.WIDTH = 320;
+    this.HEIGHT = 400;
+    c = new Controller();
+}
+
+    /*constructor*/
+    MyCanvas.prototype.constructor = MyCanvas();
+
+    /* attribute */
+    MyCanvas.prototype.canvas= null;
+    MyCanvas.prototype.ctx = null;
+    MyCanvas.prototype.arrayElements = null;
+    MyCanvas.prototype.backgroundImage = null;
+    MyCanvas.prototype.c = null;
+    MyCanvas.prototype.WIDTH = 0;
+    MyCanvas.prototype.HEIGHT = 0;
 
 
-   this.getInstanceCanvas = function(){
+    /* methods */
 
-        if(canvas == null){
-           canvas = document.getElementById('canvas');
+
+    /*
+     * Get a instance of canvas. this method use the Partner Singleton
+     * @return {CanvasRenderingContext2D}
+     * */
+    MyCanvas.prototype.getInstanceCanvas = function(){
+
+        if(this.canvas == null){
+            this.canvas = document.getElementById('canvas');
         }
-        return canvas;
+        return this.canvas;
     }
 
 
@@ -33,44 +50,41 @@ var MyCanvas = function() {
      * Get a context 2d of canvas
      * @return {HTMLContext2dCanvas}
      * */
-    this.getContextCanvas = function(){
+    MyCanvas.prototype.getContextCanvas = function(){
         return this.getInstanceCanvas().getContext('2d');
     }
 
     /*
      *  Clear all canvas
      * */
-    this.clearCanvas = function(){
+    MyCanvas.prototype.clearCanvas = function(){
 
-        if(ctx==null)
-            ctx = this.getContextCanvas;
+        if(this.ctx==null)
+            this.ctx = this.getContextCanvas;
 
-        ctx.clearRect(0,0,320,400);
+    this.ctx.clearRect(0,0,320,400);
     }
 
     /*
      * Redraw canvas with backgroundImage and all Elements
      * */
-    this.redrawCanvas = function(){
+    MyCanvas.prototype.redrawCanvas = function(){
 
         this.clearCanvas();
 
-        ctx.drawImage(backgroundImage, 0, 0, WIDTH, HEIGHT);
+        this.ctx.drawImage(backgroundImage, 0, 0, this.WIDTH, this.HEIGHT);
 
         for(var i=0; i< arrayElements.length; i++){
             //this.canvas.drawImage(arrayElements[i].getImage(), arrayElements[i].getPosX(), arrayElements[i].getPosY());
-            ctx.drawImage(arrayElements[i].getImage(),arrayElements[i].getPosX(),arrayElements[i].getPosY());
+            this.ctx.drawImage(arrayElements[i].getImage(),arrayElements[i].getPosX(),arrayElements[i].getPosY(),arrayElements[i].getWidth(), arrayElements[i].getHeight());
         }
-
-
-
     }
 
     /*
      * Get backgroundImage
      * @return {HTMLImageElement}
      * */
-    this.getBGImage = function(){
+    MyCanvas.prototype.getBGImage = function(){
         return backgroundImage;
     };
 
@@ -78,30 +92,30 @@ var MyCanvas = function() {
      * Set backgroundImage
      * @param {String} - url of image
      * */
-   this.setBGImage = function(img){
+    MyCanvas.prototype.setBGImage = function(img){
+    //    backgroundImage = new Image();
         backgroundImage.src = img;
     };
 
 
-    this.pushElement = function(elem){
+    MyCanvas.prototype.pushElement = function(elem){
         arrayElements.push(elem)
     }
 
+    MyCanvas.prototype.clearArrayElement = function(){
+        for(var i=0; i<arrayElements.length; i++)
+            arrayElements.pop();
+    }
 
-    this.verificaClique = function(evt){
+    MyCanvas.prototype.verificaClique = function(evt){
 
         for(var i = arrayElements.length-1; i >=0; i--){
-            if(arrayElements[i].click(evt)==true)
-              return arrayElements[i];
+            if(arrayElements[i].click(evt)==true){
+               c.setDeleteMode('enable');
+                return arrayElements[i];
+            }
         }
-
+      c.setDeleteMode('disable');
       return null;
     };
 
-};
-
-
-/*
- * Get a instance of canvas. this method use the Partner Singleton
- * @return {CanvasRenderingContext2D}
- * */

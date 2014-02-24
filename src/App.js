@@ -1,6 +1,4 @@
-
 /**
- * canvas
  *
  */
 
@@ -11,41 +9,43 @@ var App = function(){
     //Maybe???
     //this.events {EventManager}
 };
-/*setting construct*/
-App.prototype.constructor = App();
+    /*construct*/
+    App.prototype.constructor = App();
 
-App.prototype.canvas = null;
+    /* attribute */
+    App.prototype.canvas = null;
+    App.prototype.state = '';
 
 
-/**
- * Start the loop of canvas
-**/
-App.prototype.startLoopCanvas = function(){
-    window.setInterval(this.loopCanvas, 1000/60);
-}
+    /**
+     * Start the loop of canvas
+    **/
+    App.prototype.startLoopCanvas = function(){
+        window.setInterval(this.loopCanvas, 1000/60);
+    }
 
-/* Get the canvas
-* @return {HTMLCanvasElement}
-* */
-App.prototype.getCanvas = function(){
-    return this.canvas;
+    /* Get the canvas
+    * @return {HTMLCanvasElement}
+    * */
+    App.prototype.getCanvas = function(){
+        return this.canvas;
 
-}
+    }
 
-/* Call loop of canvas*/
-App.prototype.loopCanvas = function(){
-     this.canvas.redrawCanvas();
-}
+    /* Call loop of canvas*/
+    App.prototype.loopCanvas = function(){
+         this.canvas.redrawCanvas();
+    }
 
-/* Setting events*/
-App.prototype.set_buttons_events= function(){
+    /* Setting events*/
+    App.prototype.set_buttons_events= function(){
 
-}
+    }
 
-App.prototype.setState = function(str){
-    this.state = str;
-}
+    App.prototype.setState = function(str){
+        this.state = str;
+    }
 
-App.prototype.getState = function(){
-    return this.state;
-}
+    App.prototype.getState = function(){
+        return this.state;
+    }
